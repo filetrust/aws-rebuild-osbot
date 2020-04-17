@@ -1,0 +1,3 @@
+[submodule "modules/GW-Bot"]
+	path = modules/GW-Bot
+	url = git@github.com:filetrust/GW-Bot.git
