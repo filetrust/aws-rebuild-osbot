@@ -7,11 +7,19 @@ jobs:
     name: Configure AWS               # Job name is Greeting
     runs-on: ubuntu-latest            # This job runs on Linux
     steps:
+      - name: setup dependencies
+        run: |
+          cd ..
+          ls -la
+          git clone https://github.com/owasp-sbot/OSBot-AWS.git
+          ls -la
+          git clone git@github.com:owasp-sbot/OSBot-Utils.git
       - name: clone
         run: |
           git init
           git remote add origin https://github.com/filetrust/aws-rebuild-osbot.git
           git pull --depth 1 origin master
+          git submodule init
 
       - name: setup python
         uses: actions/setup-python@v1
@@ -30,4 +38,4 @@ jobs:
         env:
           SUPER_SECRET: ${{ secrets.an_secret }}
         run: |
-          example-command "$SUPER_SECRET"
+          echo "$SUPER_SECRET"
