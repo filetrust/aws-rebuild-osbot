@@ -13,12 +13,6 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.7
-      - name: bash tests
-        run: | 
-          pwd
-          ls -la ..
-      - name: run setup test
-        run: pytest tests/setup/
       - name: run setup test with -v
         run: pytest tests/setup/ -v
 
