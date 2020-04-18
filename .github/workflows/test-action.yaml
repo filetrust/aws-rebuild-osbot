@@ -7,19 +7,11 @@ jobs:
     name: Configure AWS               # Job name is Greeting
     runs-on: ubuntu-latest            # This job runs on Linux
     steps:
-      - name: first command
-        run: |
-          pwd
-          ls -la .
       - name: clone
         run: |
           git init
           git remote add origin https://github.com/filetrust/aws-rebuild-osbot.git
           git pull --depth 1 origin master
-      - name: post close
-        run: ls -la .
-      - name: checkout source code
-        uses: actions/checkout@v2
 
       - name: setup python
         uses: actions/setup-python@v1
