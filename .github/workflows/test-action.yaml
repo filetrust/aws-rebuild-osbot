@@ -27,7 +27,7 @@ jobs:
           SUPER_SECRET: ${{ secrets.an_secret }}
 
       - shell: bash
-          env:
-            SUPER_SECRET: ${{ secrets.an_secret }}
-          run: |
-            example-command "$SUPER_SECRET"
+        env:
+          SUPER_SECRET: ${{ secrets.an_secret }}
+        run: |
+          example-command "$SUPER_SECRET"
