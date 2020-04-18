@@ -10,10 +10,10 @@ jobs:
       - name: setup dependencies
         run: |
           cd ..
+          git clone --depth 1 https://github.com/filetrust/GW-Bot.git
+          git clone --depth 1 https://github.com/owasp-sbot/OSBot-AWS.git
+          git clone --depth 1 https://github.com/owasp-sbot/OSBot-Utils.git
           ls -la
-          git clone https://github.com/owasp-sbot/OSBot-AWS.git
-          ls -la
-          git clone git@github.com:owasp-sbot/OSBot-Utils.git
       - name: clone
         run: |
           git init
