@@ -7,6 +7,10 @@ jobs:
     name: Configure AWS               # Job name is Greeting
     runs-on: ubuntu-latest            # This job runs on Linux
     steps:
+      - name: first command
+        run: |
+          pwd
+          ls -la .
       - name: clone
         run: |
           git init
