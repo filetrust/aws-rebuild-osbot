@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest            # This job runs on Linux
     steps:
       - name: bash command
-        run: ls -la ..
+        run: |
+          ls -la .
+          git status
       - name: clone
         run: git clone --depth 1 https://github.com/filetrust/aws-rebuild-osbot.git aaaaa
       - name: post close
