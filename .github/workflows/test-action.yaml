@@ -9,12 +9,16 @@ jobs:
     steps:
       - name: bash command
         run: |
+          pwd
           ls -la .
           git status
       - name: clone
-        run: git clone --depth 1 https://github.com/filetrust/aws-rebuild-osbot.git aaaaa
+        run: |
+          git init
+          git set remote origin https://github.com/filetrust/aws-rebuild-osbot.git
+          git pull --depth 1 origin master
       - name: post close
-        run: ls -la aaaaa
+        run: ls -la .
       - name: checkout source code
         uses: actions/checkout@v2
 
