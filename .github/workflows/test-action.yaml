@@ -14,7 +14,7 @@ jobs:
       - name: clone
         run: |
           git init
-          git set remote origin https://github.com/filetrust/aws-rebuild-osbot.git
+          git remote add origin https://github.com/filetrust/aws-rebuild-osbot.git
           git pull --depth 1 origin master
       - name: post close
         run: ls -la .
