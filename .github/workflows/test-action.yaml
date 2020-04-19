@@ -30,10 +30,3 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID : ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SUPER_SECRET: ${{ secrets.an_secret }}
-
-      - shell: bash
-        env:
-          SUPER_SECRET: ${{ secrets.an_secret }}
-        run: |
-          echo "$SUPER_SECRET"

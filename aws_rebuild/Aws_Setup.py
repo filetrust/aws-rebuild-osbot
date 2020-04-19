@@ -1,4 +1,5 @@
 from gw_bot.setup.OSBot_Setup import OSBot_Setup
+from osbot_aws.apis.IAM import IAM
 from osbot_aws.apis.S3 import S3
 
 
@@ -6,6 +7,7 @@ class Aws_Setup:
 
     def __init__(self,region='eu-west-2'):
         self.profile_name     = 'gw-customer-a'
+        self.profile_name     = '832789828058_AdministratorAccess'
         self.account_id       = 'cloudsdkcustomera-glasswall'
         self.lambda_s3_bucket = f'{self.profile_name}-osbot-lambdas'
         self.region           = region
@@ -28,5 +30,12 @@ class Aws_Setup:
 
     def check_aws_environment_is_deleted(self):
         assert self.s3.bucket_exists(self.lambda_s3_bucket) is False
+
+    def create_aws_user_for_github(self):
+
+        iam = IAM()
+        return list(iam.users())
+
+
 
 
