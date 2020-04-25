@@ -13,6 +13,9 @@ class test_CI_Setup(Unit_Test):
     def test_check_profile_account_security_token_status(self):
         assert self.ci_setup.check_profile_account_security_token_status() is True
 
+    def test_check_access_key_for_user(self):
+        self.result = self.ci_setup.check_access_key_for_user()
+
     def test_create_aws_user_for_github(self):
         self.result = self.ci_setup.create_aws_user_for_github()
 
@@ -38,6 +41,3 @@ class test_CI_Setup(Unit_Test):
         assert credential_1 != credential_4                                                     # which means that they shouldn't match with first credential
         assert credential_3 == credential_4                                                     # but should match with the 3rd
         assert len(self.ci_setup.iam.user_access_keys()) == 1                                   # finally confirm there is only one valid key for this user
-
-
-

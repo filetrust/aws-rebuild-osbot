@@ -1,8 +1,11 @@
+import boto3
 from botocore.exceptions import ClientError
 
 from gw_bot.setup.OSBot_Setup import OSBot_Setup
 from osbot_aws.apis.IAM import IAM
+from osbot_aws.apis.S3 import S3
 from osbot_aws.helpers.IAM_Policy import IAM_Policy
+from osbot_utils.decorators.Method_Wrappers import catch
 from osbot_utils.utils.Files import file_not_exists
 from osbot_utils.utils.Json import json_save, json_load
 
@@ -31,6 +34,16 @@ class CI_Setup:
         except ClientError as error:
             assert error.response['Error']['Message'] == 'The security token included in the request is expired'
             return False
+
+    @catch
+    def check_access_key_for_user(self):
+        (aws_access_key_id, aws_secret_access_key)  = self.get_access_key_for_user(new_key=False)
+
+        #return  (aws_access_key, aws_secret)
+
+        s3 = S3()
+
+        return s3.buckets()
 
     def create_aws_user_for_github(self):
 
@@ -63,13 +76,3 @@ class CI_Setup:
         else:
             access_key = json_load(self.path_temp_credentials)                                  # load keys from temp file
         return access_key.get('AccessKeyId'), access_key.get('SecretAccessKey')                 # return tuple with (access_key and secret_access_key)
-
-
-
-
-    #def check_access_key_for_user(self):
-
-
-
-
-
